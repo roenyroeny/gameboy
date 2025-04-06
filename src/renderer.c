@@ -24,12 +24,12 @@ void renderer_updateCamera()
         camx++;
         SCX_REG += 1;
     }
-    if(camx > tgty)
+    if(camx > tgtx)
     {
         camx--;
         SCX_REG -= 1;
     }	
-    if(camy < tgtx)
+    if(camy < tgty)
     {
         camy++;
         SCY_REG += 1;

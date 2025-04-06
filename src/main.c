@@ -5,28 +5,25 @@
 #include "renderer.h"
 #include "world.h"
 
+#include "data.h"
+
 u16 viewx = 0, viewy = 0;
+
+
+u8 pallette[]={170, 170,170,170,170,170,170,170};
 
 joypads_t joypads;
 void main(void)
 {
+	gotogxy(1, 2);
+	gprintf("X__");
+	color(BLACK, WHITE, SOLID);
+    draw_image(data_tiles);
 	while(1)
 	{
-		
         // poll joypads
         joypad_ex(&joypads);
-        
-		color(BLACK, WHITE, SOLID);
 		
-		gotogxy(1, 2);
-		gprintf("X__");
-//		for(u8 c = 0; c < 32; c++)
-		{
-			gotogxy(0, 1);
-			gprintf("Hello World!");
-		}
-		plot(1, 4, BLACK, SOLID);
-		plot(2, 4, BLACK, SOLID);
 		// print(36);
         if (joypads.joy0 & J_LEFT && viewx > 1)
 			viewx -= 1;
@@ -40,6 +37,9 @@ void main(void)
 		renderer_setTarget(viewx, viewy);
 		renderer_render();
 
+		for(i16 i = 0; i < 16; i++)
+			_VRAM9000[i] = 16 + i;
+		
 		vsync();
 	}
 }
