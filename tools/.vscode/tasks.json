@@ -1,0 +1,29 @@
+{
+    "version":  "2.0.0",
+    "tasks": [
+        {
+            "label": "Build GameBoy ROM",
+            "type": "shell",
+            "windows": {
+                "command": "make",
+                "args": [""]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Make clean",
+            "type": "shell",
+            "windows": {
+                "command": "make",
+                "args": ["clean"]
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        }
+    ]
+}
