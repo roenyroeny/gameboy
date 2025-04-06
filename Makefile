@@ -1,5 +1,5 @@
 GBDK_HOME = ./
-CC = $(GBDK_HOME)tools/gbdk/lcc
+CC = $(GBDK_HOME)tools/gbdk/bin/lcc
 COMPILER_FLAGS = -std=c99 -Wall -g
 SRCS = $(wildcard ./*.c ./lib/*.c)
 OBJS = $(SRCS:.c=.o)
