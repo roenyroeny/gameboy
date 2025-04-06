@@ -13,11 +13,11 @@ void renderer_setTarget(u16 x, u16 y)
     tgty=y;
 }
 
-void renderer_init()
+void renderer_init(void)
 {
 }
 
-void renderer_updateCamera()
+void renderer_updateCamera(void)
 {
     if(camx < tgtx)
     {
@@ -41,7 +41,7 @@ void renderer_updateCamera()
     }
 }
 
-void renderer_render()
+void renderer_render(void)
 {
     renderer_updateCamera();
 

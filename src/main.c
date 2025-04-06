@@ -20,7 +20,7 @@ const uint8_t cross_tile[16] = {
     0x00, 0x3C   // Row 7
 };
 
-void vblank_handler()
+void vblank_handler(void)
 {
 	
     set_bkg_tile_xy(5, 5, 0);  // example: put tile 42 at (5,5)
