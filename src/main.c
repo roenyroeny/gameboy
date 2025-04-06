@@ -1,60 +1,45 @@
 #include <gb/gb.h>
-#include <stdint.h>
 #include <gb/drawing.h>
-#include "types.h"
+#include "mytypes.h"
 
-void linetest(uint8_t x, uint8_t y, uint8_t w) {
-    color(DKGREY,WHITE,SOLID);
-	for (int i = -w; i <= w; i++) line(x,y,x+i,y-w);
-	for (int i = -w; i <= w; i++) line(x,y,x+w,y+i);
-	for (int i = -w; i <= w; i++) line(x,y,x+i,y+w);
-	for (int i = -w; i <= w; i++) line(x,y,x-w,y+i);	
-}
+#include "renderer.h"
+#include "world.h"
 
+u16 viewx = 0, viewy = 0;
+
+joypads_t joypads;
 void main(void)
 {
-    u8 c,d,e;
-    c=0;
-    /* Draw many characters on the screen with different fg and bg colours */
-    for (u8 a=0; a<=15; a++) {
-	for (u8 b=0; b<=15; b++) {
-	    gotogxy(b,a);
-	    d=a/4;
-	    e=b/4;
-	    if (d==e) {
-		d=3-e;
-	    }
-	    color(d,e,SOLID);
-	    gprintf("%c",c++);
-	} 
-    }
+	while(1)
+	{
+		
+        // poll joypads
+        joypad_ex(&joypads);
+        
+		color(BLACK, WHITE, SOLID);
+		
+		gotogxy(1, 2);
+		gprintf("X__");
+//		for(u8 c = 0; c < 32; c++)
+		{
+			gotogxy(0, 1);
+			gprintf("Hello World!");
+		}
+		plot(1, 4, BLACK, SOLID);
+		plot(2, 4, BLACK, SOLID);
+		// print(36);
+        if (joypads.joy0 & J_LEFT && viewx > 1)
+			viewx -= 1;
+        if (joypads.joy0 & J_RIGHT && viewx < 0xffff - 2)
+			viewx += 1;		 
+        if (joypads.joy0 & J_UP && viewy > 1)
+			viewy -= 1;
+        if (joypads.joy0 & J_DOWN && viewy < 0xffff - 2)
+			viewy += 1;
 
-    u8 meow;
+		renderer_setTarget(viewx, viewy);
+		renderer_render();
 
-    /* Draw two circles, a line, and two boxes in different drawing modes */
-    color(LTGREY,WHITE,SOLID);
-    circle(140,20,15,M_FILL);
-    color(BLACK,WHITE,SOLID);
-    circle(140,20,10,M_NOFILL);
-    color(DKGREY,WHITE,XOR);
-    circle(120,40,30,M_FILL);
-    line(0,0,159,143);
-    color(BLACK,LTGREY,SOLID);
-    box(0,130,40,143,M_NOFILL);
-    box(50,130,90,143,M_FILL);
-
-
-	linetest(130, 100, 20);
-
-    /* Scroll the screen using the hardest method imaginable :) */
-    for (c=0; c<=143; c++) {
-	for (u8 b=0; b<=142; b++) {
-	    for (u8 a=0; a<=159; a++) {
-		color(getpix(a,b+1),WHITE,SOLID);
-		plot_point(a,b);
-	    }
-	    color(WHITE,WHITE,SOLID);
+		vsync();
 	}
-	line(0,143,159,143);
-    }
 }
