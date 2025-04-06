@@ -1,0 +1,10 @@
+Language: Cpp
+BasedOnStyle: LLVM
+SortIncludes: false
+BreakBeforeBraces: Allman
+NamespaceIndentation: All
+IndentWidth: 4
+TabWidth: 4
+ColumnLimit: 0
+PointerAlignment: Left
+AllowShortLambdasOnASingleLine: Empty

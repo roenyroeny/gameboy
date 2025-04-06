@@ -1,9 +1,7 @@
-/* Sample Program to demonstrate the drawing functions in GBDK */
-/* Jon Fuge : https://github.com/jf1452 */
-
 #include <gb/gb.h>
 #include <stdint.h>
 #include <gb/drawing.h>
+#include "types.h"
 
 void linetest(uint8_t x, uint8_t y, uint8_t w) {
     color(DKGREY,WHITE,SOLID);
@@ -15,11 +13,11 @@ void linetest(uint8_t x, uint8_t y, uint8_t w) {
 
 void main(void)
 {
-    uint8_t  a,b,c,d,e;
+    u8 c,d,e;
     c=0;
     /* Draw many characters on the screen with different fg and bg colours */
-    for (a=0; a<=15; a++) {
-	for (b=0; b<=15; b++) {
+    for (u8 a=0; a<=15; a++) {
+	for (u8 b=0; b<=15; b++) {
 	    gotogxy(b,a);
 	    d=a/4;
 	    e=b/4;
@@ -30,6 +28,8 @@ void main(void)
 	    gprintf("%c",c++);
 	} 
     }
+
+    u8 meow;
 
     /* Draw two circles, a line, and two boxes in different drawing modes */
     color(LTGREY,WHITE,SOLID);
@@ -48,8 +48,8 @@ void main(void)
 
     /* Scroll the screen using the hardest method imaginable :) */
     for (c=0; c<=143; c++) {
-	for (b=0; b<=142; b++) {
-	    for (a=0; a<=159; a++) {
+	for (u8 b=0; b<=142; b++) {
+	    for (u8 a=0; a<=159; a++) {
 		color(getpix(a,b+1),WHITE,SOLID);
 		plot_point(a,b);
 	    }
