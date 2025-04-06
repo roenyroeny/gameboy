@@ -11,7 +11,19 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": [
+                {
+                    "pattern": [
+                        {
+                            "regexp": "^([^:]*):([0-9]+): ?(.*)$",
+                            "file": 1,
+                            "location": 2,
+                            "message": 3
+                        }
+                    ]
+                }
+            ],
         },
         {
             "label": "Make clean",
