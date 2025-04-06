@@ -1,0 +1,1 @@
+..\gbdk\bin\png2asset "%~1" -keep_duplicate_tiles -map -bpp 2 -tiles_only -c data.c
