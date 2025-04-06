@@ -1,7 +1,7 @@
 GBDK_HOME = ./
 CC = $(GBDK_HOME)tools/gbdk/bin/lcc
 COMPILER_FLAGS = -std=c99 -Wall -g
-SRCS = $(wildcard ./src*.c)
+SRCS = $(wildcard ./src/*.c)
 OBJS = $(patsubst %.c, ./build/%.o, $(SRCS))
 INCLUDE_PATHS = -Iinclude 
 
