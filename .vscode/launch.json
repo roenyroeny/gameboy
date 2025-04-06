@@ -2,12 +2,12 @@
     "version": "0.0.1",
     "configurations": [
         {
+            "preLaunchTask": "build",
             "type": "emulicious-debugger",
             "request": "launch",
             "name": "Launch in Emulicious",
-            "program": "${workspaceFolder}/gameboy.gb",
+            "program": "${workspaceFolder}/build/gameboy.gb",
             "port": 58870,
-            "stopOnEntry": true,
             "emuliciousPath": "${workspaceFolder}/tools/emulicious/Emulicious.exe"
         }
     ]

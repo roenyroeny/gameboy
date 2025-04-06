@@ -2,7 +2,7 @@
     "version":  "2.0.0",
     "tasks": [
         {
-            "label": "Build GameBoy ROM",
+            "label": "build",
             "type": "shell",
             "windows": {
                 "command": "make",
