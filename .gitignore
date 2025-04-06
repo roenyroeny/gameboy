@@ -4,3 +4,4 @@ tools/emulicious/Emulicious.ini
 *.lst
 *.o
 *.sym
+tools/emulicious/sstates
